@@ -42,7 +42,7 @@ class UserAddressesController extends Controller
         return view('user_addresses.create_and_edit', ['address' => $user_address]);
     }
 
-    public function update(UserAddress $user_address)
+    public function update(UserAddress $user_address, UserAddressRequest $request)
     {
         $this->authorize('own', $user_address);
 
