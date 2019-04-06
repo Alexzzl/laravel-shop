@@ -17,18 +17,18 @@ class AddCartRequest extends Request
         return [
             'sku_id' => [
                 'required',
-                function ($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) { // $attribute='sku_id'
                     if (!$sku = ProductSku::find($value)) {
-                        return $fail($attribute.'该商品不存在');
+                        return $fail('该商品不存在');
                     }
                     if (!$sku->product->on_sale) {
-                        return $fail($attribute.'该商品未上架');
+                        return $fail('该商品未上架');
                     }
                     if ($sku->stock === 0) {
-                        return $fail($attribute.'该商品已售完');
+                        return $fail('该商品已售完');
                     }
                     if ($this->input('amount') > 0 && $sku->stock < $this->input('amount')) {
-                        return $fail($attribute.'该商品库存不足');
+                        return $fail('该商品库存不足');
                     }
                 }
             ],
