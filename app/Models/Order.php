@@ -39,9 +39,13 @@ class Order extends Model
         'payment_method',
         'payment_no',
         'refund_status',
+        'refund_no',
+        'closed',
+        'reviewed',
         'ship_status',
         'ship_data',
         'extra',
+
     ];
 
     protected $casts = [
